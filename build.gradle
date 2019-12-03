@@ -62,8 +62,6 @@ processResources {
 
 // Set manifest entries
 jar {
-    classifier 'base'
-
     manifest {
         attributes(
                 'Built-By': System.properties['user.name'],
@@ -74,8 +72,6 @@ jar {
 }
 
 shadowJar {
-    classifier ''
-
     dependencies {
         include(dependency('com.google.guava:guava'))
         include(dependency('org.ow2.asm:asm-all'))
@@ -105,7 +101,8 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 
 artifacts {
-    archives shadowJar
+//    archives shadowJar
+    archives jar
     archives sourceJar
     archives javadocJar
 }
